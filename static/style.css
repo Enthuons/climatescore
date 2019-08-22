@@ -1,0 +1,31 @@
+body
+    {
+        padding:0;
+    }
+.header
+    {
+        border : none;
+        display : flex;
+        align-items: center;
+        justify-content: center;
+        background-color:#d9d9d9;
+        height: 7vh;
+    }
+.contents
+    {
+        border : none;
+        background-color: #f2f2f2;
+        min-height: 100vh;
+        padding:5vh 5vw;
+    }
+#results
+    {
+        font-size:23px;
+        font-weight:600;
+        background-color:#ccffcc;
+        margin-top:10vh;
+    }
+input[type="text"]
+    {
+        width:50%;
+    }

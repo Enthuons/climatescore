@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Test location tempscore</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+<body>
+    <div class="container-fluid header"><h3>Enter User Loction</h3></h3></div>
+    <div class="container contents">
+
+            <form id='location_form' action="/get-latlong" method="post">
+                
+                <label for="user_location">Enter your location</label>
+                <input type="text" id="auto-place" name="location" required="" placeholder="Ex: 600 N Hayworth Ave" />
+                <button name="submit" type="submit">Get temp</button>
+
+            </form>
+            <div>
+                {{msg}}
+            </div>
+            {% if loc %}
+    <div class="container-fluid" id="results">
+        <div class="location">Location:  {{loc}}</div>
+        <div class="tempscore">Tempscore: {{temp_score}}</div>
+        <div class="location">98th Percent Historic Temp: {{((perc_temp*9)/5)-459.67}} degree F</div>
+   
+    </div> {% endif %}
+    </div>
+    
+</body>
+<script>
+    function getCompletePlace(){
+        var input = document.getElementById('auto-place');
+        var complete = new google.maps.places.Autocomplete(input);
+        complete.setFields(['address_components', 'name']); 
+    }
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{API_KEY}}&libraries=places&callback=getCompletePlace"></script>
+
+</html>
