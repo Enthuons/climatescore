@@ -1,0 +1,634 @@
+@media screen and (max-width: 2000px)
+{
+    .top-nav
+    {
+        background-color: #000;
+        min-height:8vh;
+        padding:2px;
+    }
+    .top-nav > div
+    {
+        margin-top: 5px;
+    }
+    .logo
+    {
+        padding:0;
+    }
+    .logo img   
+    {
+        height:7vh;width:15vw;
+    }
+    .inner-search-area
+    {
+        padding:2px;
+    }
+    input[type="text"]
+    {
+        float: left;
+        position:relative;
+        width:70%;
+        display: block;
+        padding: 6px;
+        font-size: 15px;
+        border: none;
+        margin-top:20px;
+    }
+    button
+    {
+        float: left;
+        padding: 6px 10px;       
+        margin-left:0;
+        font-size: 15px;
+        border: none;
+        cursor: pointer;
+        background-color: #000;
+        color: #fff;
+        margin-top:20px;
+    }
+    .inner-nav
+    {
+        padding-top:2vh;
+        text-align: right;
+    }
+    .inner-nav a
+    {
+        color:#fff; 
+        margin-left: 2vw;
+        font-size: 25px;
+        margin-top: 15px;
+        font-weight:700;
+    }    
+    .main-inner-content
+    {
+        padding:0 5%;       
+    }
+    .graphics
+    {
+        min-height:40vh;
+        padding:0;
+    }
+    .graph
+    {
+        border:0.5px solid black;
+        border-radius: 10px;
+        height:40vh;
+    }
+    .graph-heading
+    {
+        font-size: 20px; 
+        font-weight:600;
+        text-align: center;
+    }    
+    .map
+    {
+       height: 40vh;
+       padding:0;
+    }
+    .location{height: 100%;padding:5%;}
+    .location > img
+    {
+        height:90%;width:90%;
+    }
+    .panel-collapse
+    {
+        margin-top:0;
+    }    
+    .address
+    {
+        font-weight: 700;
+        font-size: 2rem;
+        min-height:15vh;
+        padding-left: 7vw;
+        margin-top: 4vh;
+    }
+    .doughnut 
+    { 
+        height:75%;
+        width:80%;
+        margin-left:10%;
+        background-color: rgb(246, 241, 241);
+    }
+    #doughnut-chart
+    {
+        width:90%;
+        height:70%;
+        background-color: rgb(246, 241, 241);
+    }
+    #climate-score-count
+    {
+        font-size: 60px;
+    }
+    .climate-score-total
+    {
+        font-size: 35px;
+    }
+    .chart-score
+    {
+        position:absolute;
+        left:37%;
+        top:60%;
+        z-index:4000;
+    }    
+    .climatescore-prediction
+    {
+        font-size: 22px;
+        font-weight:600;
+        text-align: center;
+    }
+    .components-heading
+    {
+        font-size: 17px;
+        font-weight:600;
+        text-align: left;
+        margin-top:2vh;
+    }
+    .components-description
+    {
+        min-height:10vh;
+    }
+    .open-list
+    {
+        min-height:9vh;
+        font-size: 22px;
+        font-weight:600;
+        text-align: left;
+        padding:1px 5px;
+        cursor: pointer;
+        padding:15px;
+    }
+    .listing
+    {
+        min-height:9vh;
+        font-size: 22px;
+        cursor: pointer;
+        padding:15px;
+    }
+    #carbon-score-section
+    {
+        cursor: pointer;
+    }
+    .listing > .panel-collapse, #carbon-score-section
+    {
+        margin-top:2px;
+        padding-left: 10%;
+        font-size: 17px;
+        cursor:default;
+    }
+    .listing-outer
+    {
+        min-height:8vh;
+        padding:2px 15px;
+        padding-bottom: 0;
+        margin-top:-20px;
+    }
+    .description-panel
+    {min-height:8vh;
+    padding-left:70px;
+    }
+}
+@media screen and (max-width: 1500px)
+{
+    .inner-search-area
+    {
+        padding:1px;
+    }
+    input[type="text"]
+    {
+        margin-top:2px;
+    }
+    button
+    {
+        margin-top:2px;
+    }
+    .inner-nav
+    {
+        padding-top:1vh;
+    }
+    .inner-nav a
+    {
+        font-size: 1.8rem;
+        margin-top: 4px;
+    }
+    
+    .location > img
+    {
+        height:100%;
+        width: 100%;
+    }  
+    .listing-outer
+    {
+        min-height:10vh;
+        padding:2px 5px;
+        padding-bottom: 0;
+    }
+    .listing{
+        margin-top:0;
+        height:3vh;
+    }
+    .listing > div
+    {
+        padding:0;
+    }    
+}
+@media screen and (max-width: 1300px) 
+{
+    .inner-search-area
+    {
+        margin-top:2px;
+        padding:1px;
+    }
+    input[type="text"]
+    {
+        margin-top:5px;
+    }
+    button
+    {
+        margin-top:5px;
+    }
+    .inner-nav
+    {
+        text-align: center;
+    }
+    .inner-nav a
+    {
+        font-size:17px;
+        margin-top: 4px;
+        margin-left:10px;
+    }
+    .listing-outer
+    {
+        min-height:10vh;
+        padding:2px 5px;
+        padding-bottom: 0;
+    }
+    .listing{
+        margin-top:0;
+        height:3vh;
+    }
+    .listing > div
+    {
+        padding:0;
+    } 
+    
+}
+
+@media screen and (max-width: 800px) {
+    .top-nav
+    {
+        min-height:5%;
+        padding:0 5px 0 ;
+    }
+    .top-nav > div
+    {
+        margin-top: 3px;
+    }
+    .logo
+    {
+        margin-top:2px;
+    }
+    .logo img   
+    {
+        height:55px;width:170px;
+    }
+    .inner-search-area
+    {
+        padding-top:8px;
+    }
+    .inner-nav
+    {       
+        padding-top:8px;
+    }
+    .inner-nav a
+    {
+        margin-left: 10px;
+        font-size: 18px;
+        font-weight:900;
+        margin-top: 4px;
+    }
+    input[type="text"]
+    {
+        width:90%;
+        margin-top:3px;
+    }
+    button
+    {
+        margin-top:3px;
+        width:10%;
+    }
+    .address
+    {
+        font-size: 2.2rem;
+        min-height:30px;
+        margin-top:20px;
+        margin-left: 20px;
+    }    
+    .main-inner-content
+    {
+        padding:0px;     
+        margin-top: 5px; 
+        margin-top:35px;         
+    }    
+    .graph
+    {
+        height:300px;        
+    }
+    .doughnut 
+    { 
+        height: 80%;
+        width:90%;
+        margin-left:5%;
+    }
+    #doughnut-chart
+    {
+        height:90%;
+    }
+    #climate-score-count
+    {
+        font-size: 50px;
+    }
+    
+    .climate-score-total
+    {
+        font-size: 25px;
+    }
+    .chart-score
+    {
+        left:33%;
+        top:70%;
+    }    
+    .climatescore-prediction
+    {
+        font-size: 17px;
+    }    
+    .map
+    {
+       height: 100%;
+    }
+    .location{height: 300px;padding:5% 0;}
+    
+    .location > img
+    {
+        width:100%;
+        height:100%;
+    }
+    .components-heading-outer
+    {
+        margin-top:-200px;
+    }
+    .components-description-outer
+    {
+        margin-top:-150px;
+    }
+    .components-heading
+    {
+        font-size: 20px;
+        font-weight:900;
+        margin-top:20px;
+    }
+    .components-description
+    {
+        margin-top:20px;
+    }
+    .open-list
+    {
+        min-height:40px;
+        padding:30px 5px 1px 5px;
+    }
+    .listing
+    {
+        min-height:40px;
+        font-size: 20px;
+        padding:10px 12px;
+        
+    }
+    .listing-outer
+    {
+        min-height:40px;
+        margin-top:-17px;
+    }
+    .description-panel
+    {
+        padding-left: 10%;
+        font-size: 17px;
+    }
+}
+@media screen and (max-width: 800px) and (max-height: 1200px){
+    .inner-search-area
+    {
+        margin-top:2px;
+        padding:1px;
+    }
+    input[type="text"]
+    {
+        margin-top:5px;
+    }
+    button
+    {
+        margin-top:5px;
+    }
+    .inner-nav
+    {
+        text-align: center;
+    }
+    .inner-nav a
+    {
+        font-size:17px;
+        margin-top: 4px;
+        margin-left:25px;
+    }
+    .address
+    {
+        font-size: 2rem;
+        margin-top:15px;
+        margin-left: 20px;
+    }    
+    .main-inner-content
+    {
+        padding:0px;     
+        margin-top: 5px; 
+        margin-top:30px;         
+    }
+    .graph
+    {
+        height:250px;        
+    }
+    .doughnut 
+    { 
+        height: 80%;
+        width:90%;
+        margin-left:5%;
+    }
+    #doughnut-chart
+    {
+        height:90%;
+    }
+    #climate-score-count
+    {
+        font-size: 50px;
+    }
+    
+    .climate-score-total
+    {
+        font-size: 25px;
+    }
+    .chart-score
+    {
+        left:33%;
+        top:70%;
+    }    
+    .climatescore-prediction
+    {
+        font-size: 17px;
+    }
+    .map
+    {
+       height: 70%;
+       margin-top:5px;
+    }
+    .location{height: 170px;padding:0% 5%;}
+    
+    .location > img
+    {
+        width:70%;
+        margin-left:15%;
+        height:100%;
+    }
+    .components-heading-outer
+    {
+        margin-top:-25px;
+    }
+    .components-description-outer
+    {
+        margin-top:30px;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .top-nav
+    {
+        padding:1px;
+    }
+    .top-nav > div
+    {
+        margin-top: 3px;
+    }
+    .logo
+    {
+        padding-top:7px;
+    }
+    .logo img   
+    {
+        height:55px;width:150px;
+    }
+    .inner-search-area
+    {
+        padding:0;
+    }
+    .inner-search-area > form
+    {
+        padding:0;
+    }
+    
+    input[type="text"]
+    {
+        width:90%;
+    }
+    button
+    {
+        width:10%;
+    }
+    .address
+    {
+        font-size: 20px;
+    }
+    .main-inner-content
+    {
+        padding:0;
+    }    
+    .inner-nav
+    {
+        padding:7px;
+        text-align: center;
+    }    
+    .graph
+    {
+        height:230px;
+    }
+    .climatescore-prediction
+    {
+        font-size: 15px;
+    }
+    .location
+    {
+        width:100%;
+    }
+    .doughnut 
+    { 
+        height: 170px;
+    }
+    #doughnut-chart
+    {
+        width:200px;
+        height:50px;
+    }
+    .chart-score
+    {
+        left:40%;
+        top:77%;
+    }
+    #climate-score-count
+    {
+        font-size: 30px;
+    }
+    .climate-score-total
+    {
+        font-size: 15px;
+    }
+    
+    .open-list
+    {
+        padding-top:25px;
+        font-size:17px;
+        padding:2px;
+        height:10%;
+        min-height:30px;
+    }
+    .open-list > .container-fluid
+    {
+        padding-top:15px;
+    }
+    .listing
+    {
+        font-size: 14px;
+        min-height:30px;
+        cursor: pointer;
+        padding:2px 5px;
+    }
+    .listing-outer
+    {
+        min-height:30px;
+        padding:0;
+        
+        margin-top:-17px;
+    }
+    .components-heading-outer
+    {
+        margin-top:0;
+    }
+    .components-description-outer
+    {
+        margin-top:0px;
+    }
+   .description-panel
+   {
+        min-height:8vh;
+        padding:0 20px;
+        font-size: 14px;
+   }
+    .scores
+    {
+        font-size: 15px;
+        
+    }
+}

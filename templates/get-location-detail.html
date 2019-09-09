@@ -1,0 +1,96 @@
+{% autoescape false %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ClimateScore</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    
+    <div class="main-div" style="background-image: url('/static/images/main-back.png'); " style="height:100%;">
+        <div class="header container-fluid" >
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                    
+                    <div class="logo"  >
+                        <img src="/static/images/logo.png">
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-6">
+                    <div class="nav">
+                        <a href="#">HOME</a>
+                        <a href="#">ABOUT</a>
+                        <a href="#">TEAM</a>              
+                    </div>
+                </div>
+            </div>    
+        </div>      
+       
+              
+        <div class="body container-fluid">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="main-text-area container-fluid">
+                    <h4>Get Your ClimateScore<sup>TM</sup></h4>
+                    
+                    <h6 class="sub-text-1">Climate change risks your property</h6>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                
+                    <div class="sub-text-area container-fluid">
+                        <small class="sub-text-2">Fire - Temprature - Flood - Draught - Storm</small>
+                    </div>
+                
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">    
+                <div class="form-area">           
+                    <div class="form-area-inner container-fluid">                
+                        <form id='location_form' action="/get-latlong" method="post">
+                            <input type="text" id="auto-place" name="location" required="" placeholder="Address" />
+                            <button type="submit" name ="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>            
+            </div>
+
+        </div>
+        
+    </div>
+
+    <div class="footer">
+        <div class= "col-md-12 col-sm-12 col-xs-12" >
+            <div  class= "inner-container" style="float:left;"">
+            <span class="footer-heading"><b>About ClimateScore™ </b></span>
+                
+                <p>Climate Score is the first easy to use and definitive property rating service that<br> rates real estate based on expected changes to the world’s climate.<br> 
+                Climate Score uses proprietary algorithms designed by world-renowned<br> authorities on climatology, hydrology, meteorology, and fire science
+                </p>
+                
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+<script>
+    function getCompletePlace(){
+        var input = document.getElementById('auto-place');
+        var complete = new google.maps.places.Autocomplete(input);
+        complete.setFields(['address_components', 'name']); 
+    }
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{API_KEY}}&libraries=places&callback=getCompletePlace"></script>
+</html>
+{% endautoescape %}

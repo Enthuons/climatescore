@@ -1,0 +1,281 @@
+{% autoescape false %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ClimateScore</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/results-style.css">
+</head>
+<body>
+        <div class="container-fluid top-nav">
+
+            
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                        <a class="logo" href="#"><img src="/static/images/logo.png" alt="logo"></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-5 col-xs-12">
+                    <div class="inner-search-area">
+                        <form id='location_form' action="/get-latlong" method="post">
+                            <input type="text" id="auto-place" name="location" required="" placeholder="Address" />
+                            <button type="submit" name ="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <div class="inner-nav">
+                        <a href="#">HOME</a>
+                        <a href="#">ABOUT</a>
+                        <a href="#">TEAM</a>
+                    </div>
+                </div>
+            
+
+        </div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="address">
+                {{loc | replace(",", "<br/>", 1)}}
+            </div>
+        </div>
+        
+        <div class=" col-md-9 col-sm-12 col-xs-12">
+            <div class="main-inner-content">            
+            
+                <div class="graphics col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <div class="graph">
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="graph-heading">
+                                    Your Climate Score™
+                                </div>
+                            </div>                      
+                        
+                            <div class="doughnut graph-image col-md-12 col-sm-12 col-xs-12">
+                                   
+                                    <canvas id="doughnut-chart">                  
+                                    </canvas>
+                                    
+                                    <div class="chart-score">
+                                        <span id="climate-score-count">{{climatescore}}</span>
+                                        <span class="climate-score-total">/100</span>
+                                    </div>                                
+                                    
+                            </div>
+
+                            <div class="climatescore-prediction col-md-12 col-sm-12 col-xs-12">Vulnerability to Climate Change</div>
+                        
+                        </div>
+                    </div>
+                    <div class="map col-md-4 col-sm-4 col-xs-12">
+                            <div class="location">
+                                <img src="https://maps.googleapis.com/maps/api/staticmap?center={{loc}}&zoom=13&size=253x267&maptype=roadmap
+                                &markers=color:blue%7Clabel:CS%7C{{loc}}
+                                &key={{API_KEY}}" alt="map">
+                            </div>
+                    </div>
+                </div>
+                
+                <div class="components-heading-outer col-md-12 col-sm-12 col-xs-12">
+                    <div class="components-heading">
+                        Climate Score™ Components
+                    </div>
+                </div>
+                
+                <div class="components-description-outer col-md-12 col-sm-12 col-xs-12">
+                    <div class="components-description">
+                                <div style="min-height:9vh;" class="panel panel-default"> 
+
+                                        <div data-toggle="collapse" data-parent="#accordion" href="#climate-score-section" class="open-list collapsed container-fluid">
+                                            <div class="container-fluid">
+                                                <div class="col-md-8 col-sm-8 col-xs-8">🌍 Climate Score™</div>
+                                                <div id="climatescore" class="col-md-2 col-sm-2 col-xs-2 scores" style="padding:0;">{{climatescore}}</div>
+                                                <div class="col-md-2 col-sm-2 col-xs-2" style="padding:0;"><span class="fa fa-chevron-up rotate"></span></div>
+                                            </div> 
+                                        </div>
+
+                                        <div id="climate-score-section" class="panel-collapse collapse" style="margin-top:40px;">
+                                                <div class="listing-outer panel panel-default collapsed" data-toggle="collapse" data-parent="#accordion" href="#climate-score-section-1">
+                                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="listing">
+                                                            <div class="col-md-8 col-sm-8 col-xs-8">🌡 Temprature Score</div>
+                                                            <div class="col-md-3 col-sm-2  col-xs-2 scores" style="padding:0;">{{temp_score}}</div>
+                                                            <div class="col-md-1 col-sm-2 col-xs-2" style="padding:0;"><span class="fa fa-chevron-up rotate"></span></div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div id="climate-score-section-1" class="panel-collapse collapse description-panel">
+                                                            {{tempScoreDescription}}
+                                                    </div>
+                                                    
+                                                    
+                                                </div>
+                                                
+                                                <div class="listing-outer panel panel-default collapsed" data-toggle="collapse" data-parent="#accordion" href="#climate-score-section-2">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="listing ">
+                                                                <div class="col-md-8 col-sm-8 col-xs-8">🔥 Fire Score</div>
+                                                                <div class="col-md-3 col-sm-2 col-xs-2 scores"  style="padding:0;">{{firescore}}</div>
+                                                                <div class="col-md-1 col-sm-2 col-xs-2"  style="padding:0;"><span class="fa fa-chevron-up rotate"></span></div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div id="climate-score-section-2" class="panel-collapse collapse description-panel">
+                                                                {{fireScoreDescription}}
+                                                        </div>
+                                                        
+                                                </div>
+
+                                                <div class="listing-outer panel panel-default collapsed" data-toggle="collapse" data-parent="#accordion" href="#climate-score-section-3">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">   
+                                                            <div class="listing ">
+                                                                <div class="col-md-8 col-sm-8 col-xs-8">🌧 Storm Score</div>
+                                                                <div class="col-md-3 col-sm-2 col-xs-2 scores"  style="padding:0;">X</div>
+                                                                <div class="col-md-1 col-sm-2 col-xs-2"  style="padding:0;"><span class="fa fa-chevron-up rotate"></span></div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div id="climate-score-section-3" class="panel-collapse collapse description-panel">
+                                                                {{stormScoreDescription}}
+                                                        </div>
+                                                        
+                                                        
+                                                </div>
+
+                                                <div class="listing-outer panel panel-default collapsed" data-toggle="collapse" data-parent="#accordion" href="#climate-score-section-4">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="listing ">
+                                                                <div class="col-md-8 col-sm-8 col-xs-8">🌊 Flood Score</div>
+                                                                <div class="col-md-3 col-sm-2 col-xs-2 scores"  style="padding:0;">X</div>
+                                                                <div class="col-md-1 col-sm-2 col-xs-2" style="padding:0;" ><span class="fa fa-chevron-up rotate"></span></div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div id="climate-score-section-4" class="panel-collapse collapse description-panel" >
+                                                                {{floodScoreDescription}}
+                                                        </div>
+                                                        
+                                                </div>
+                                        </div>
+                                        
+                                </div>
+                                <div style="min-height:9vh;" class="panel panel-default"> 
+                                        
+                                        <div data-toggle="collapse" data-parent="#accordion" href="#carbon-score-section" class="open-list collapsed container-fluid">
+                                            
+                                                <div class="container-fluid">
+                                                    <div class="col-md-8 col-sm-8 col-xs-8">👣 Carbon Footprint score</div>
+                                                    <div id="climatescore" class="col-md-2 col-sm-2  col-xs-2 scores" style="padding:0;">{{carbonFootprintScore}}</div>
+                                                    <div class="col-md-2 col-sm-2 col-xs-2" style="padding:0;"   ><span class="fa fa-chevron-up rotate"></span></div>
+                                                </div>
+                                            
+                                        </div>
+                                        <div id="carbon-score-section" class="panel-collapse collapse " >
+                                                {{carbonScoreDescription}}
+                                        </div>
+                                    
+                                </div>
+                                
+                    </div>
+                </div>
+                
+            </div>            
+        </div>
+        
+</body>
+</html>
+<script>
+        function getCompletePlace(){
+            var input = document.getElementById('auto-place');
+            var complete = new google.maps.places.Autocomplete(input);
+            complete.setFields(['address_components', 'name']); 
+        }
+        
+</script>
+<script>
+    var ctx = document.getElementById("doughnut-chart");
+    var score = document.getElementById("climatescore").textContent;
+    var to_color = "#000000";
+    if(score<=50)
+        to_color="#e60000";
+    else if(score>50 && score<=65)
+        to_color="#ff6600";
+    else if(score>65 && score<=75)
+        to_color="#ffff00";
+    else if(score>75 && score<=87.5)
+        to_color="#ccff99";
+    else
+        to_color="#00cc00";
+    
+    $("#climate-score-count").css("color",to_color);
+    $(".climatescore-prediction").css("color",to_color);
+
+    $('.scores').each(function(i, element) {
+        scores=element.textContent;
+        
+        if(scores<=50)
+            $(element).css("color","#e60000");
+        else if(scores>50 && scores<=65)
+            $(element).css("color","#ff6600");
+        else if(scores>65 && scores<=75)
+            $(element).css("color","#ffff00");
+        else if(scores>75 && scores<=87.5)
+            $(element).css("color","#ccff99");
+        else
+            $(element).css("color","#00cc00");
+    });
+
+    
+    score= (score*9)/5;
+    
+    var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    interactivityEnabled: false,
+    data: {indexLabelPlacement: "inside",
+        labels: ["Very Bad", "Bad", "Fair", "Good", "Excellent"],
+        
+        datasets: [
+        {
+            
+            label: 'Score For Location',
+            backgroundColor: ["#e60000", "#ff6600", "#ffff00", "#ccff99", "#00cc00"],
+            data: [50,15,10,12.5,12.5],//[score,100-score],   
+            weight:1,  
+            borderWidth: 0
+        },
+        {
+            label: 'Score pointer',
+            backgroundColor: ["#f6f1f1", "#000", "#f6f1f1"],
+            data: [score-1,1,180-score],//to degree
+            weight:4,
+            borderWidth: 0
+        }
+    ],
+    
+    },
+    options: {
+        maintainAspectRatio: false,
+        rotation: 1 * Math.PI,
+        circumference: 1 * Math.PI,
+        cutoutPercentage: 50,
+        tooltips: {
+         enabled: false
+    },
+    events: ['click']
+            }   
+
+});
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{API_KEY}}&libraries=places&callback=getCompletePlace"></script>
+    
+{% endautoescape %}

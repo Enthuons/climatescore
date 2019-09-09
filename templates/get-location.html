@@ -1,7 +1,8 @@
+{% autoescape false %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Test location tempscore</title>
+<title>ClimateScore</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -12,14 +13,14 @@
 
 </head>
 <body>
-    <div class="container-fluid header"><h3>Enter User Loction</h3></h3></div>
+    <div class="container-fluid header-old"><h3>What's Your Climatescore?</h3></div>
     <div class="container contents">
 
             <form id='location_form' action="/get-latlong" method="post">
                 
-                <label for="user_location">Enter your location</label>
-                <input type="text" id="auto-place" name="location" required="" placeholder="Ex: 600 N Hayworth Ave" />
-                <button name="submit" type="submit">Get temp</button>
+                <!--<label for="user_location">Enter your address:</label>-->
+                <input type="text" id="auto-place" name="location" required="" placeholder="Ex: 600 N Hayworth Ave. Los Angeles, CA 90048" />
+                <button name="submit" type="submit" style="background-color: grey;">Get Your ClimateScore</button>
 
             </form>
             <div>
@@ -28,8 +29,27 @@
             {% if loc %}
     <div class="container-fluid" id="results">
         <div class="location">Location:  {{loc}}</div>
-        <div class="tempscore">Tempscore: {{temp_score}}</div>
-        <div class="location">98th Percent Historic Temp: {{((perc_temp*9)/5)-459.67}} degree F</div>
+        <div class="location">Latitude: {{latitude}} Longitude: {{longitude}} </div>
+        <p></p>
+        <div class="location">
+        🌍 Climate Score: <b>{{climatescore}}</b><br>Your ClimateScore is the average of all of your Climate Hazard Scores below.
+        <p></p>
+        🌡 Temp Score: {{temp_score}}<br>{{tempScoreDescription}}
+        <p></p>
+        🔥 Fire Score: {{firescore}}<br>{{fireScoreDescription}}
+        <p></p>
+        🌊 Flood Score: coming soon
+        <p></p>
+        💧 Drought Score: {{droughtscore}}<br>{{droughtScoreDescription}}
+        <p></p>
+        🌧 Storm Score: coming soon
+        <p></p>
+        👣 Carbon Footprint Score: {{carbonFootprintScore}}<br>{{carbonScoreDescription}}
+        </div>
+        <div class="location"><img src="https://maps.googleapis.com/maps/api/staticmap?center={{loc}}&zoom=13&size=600x300&maptype=roadmap
+&markers=color:blue%7Clabel:CS%7C{{loc}}
+&key={{API_KEY}}"></div>
+
    
     </div> {% endif %}
     </div>
@@ -44,4 +64,7 @@
 </script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{API_KEY}}&libraries=places&callback=getCompletePlace"></script>
 
+
+
 </html>
+{% endautoescape %}
